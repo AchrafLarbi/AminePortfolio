@@ -1,10 +1,10 @@
 import Header from "../components/layout/Header";
 import AcceuilPage from "../components/AcceuilPage";
-import Services from "../components/Services";
-import Galerie from "../components/Galerie";
-import FeedbackForm from "../components/FeedbackForm";
-import LocalisationSection from "../components/Localisation";
-import Footer from "../components/layout/Footer";
+// import Services from "../components/Services";
+// import Galerie from "../components/Galerie";
+// import FeedbackForm from "../components/FeedbackForm";
+// import LocalisationSection from "../components/Localisation";
+// import Footer from "../components/layout/Footer";
 
 const LandingPage = () => {
   return (
