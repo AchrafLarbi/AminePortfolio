@@ -30,7 +30,7 @@ const Header = () => {
 
           {/* Hamburger Menu for Mobile and Tablet */}
           <button
-            className="lg:hidden text-white p-2 absolute left-4"
+            className="lg:hidden text-black p-2 absolute left-4"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import images from assets
@@ -17,11 +17,14 @@ export default function AcceuilPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [direction, setDirection] = useState("right");
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const slideContainerRef = useRef(null);
 
   const slides = [
     {
       title: "Photographe Événementiel",
-      subtitle: "“ Précision et Expertise “ ",
+      subtitle: "Précision et Expertise",
       description:
         "En tant que photographe événementiel professionnel, je capture chaque moment important de vos événements avec précision. Que ce soit des galas, conférences, séminaires, salons, stands d'exposition, lancements de produits ou soirées d'entreprise, chaque photo reflète l'ambiance et l'émotion du moment. Mon objectif est de vous offrir des images de haute qualité qui valorisent votre événement.",
       cta: "Planifiez votre shooting",
@@ -35,7 +38,7 @@ export default function AcceuilPage() {
       title: "Mise en Valeur de Votre Événement",
       subtitle: "",
       description:
-        "Grâce à mon expérience et à une attention particulière aux détails, je réalise des images qui subliment votre travail et renforcent votre communication visuelle. Chaque photo raconte une histoire : celle de votre entreprise, de vos collaborateurs, de vos invités et de l’ambiance qui fait la réussite de votre événement. Que ce soit pour des publications sur vos réseaux sociaux, vos supports de communication ou votre site web, mes clichés vous permettent d’avoir un contenu de qualité qui attire et engage votre audience.",
+        "Grâce à mon expérience et à une attention particulière aux détails, je réalise des images qui subliment votre travail et renforcent votre communication visuelle. Chaque photo raconte une histoire : celle de votre entreprise, de vos collaborateurs, de vos invités et de l'ambiance qui fait la réussite de votre événement. Que ce soit pour des publications sur vos réseaux sociaux, vos supports de communication ou votre site web, mes clichés vous permettent d'avoir un contenu de qualité qui attire et engage votre audience.",
       cta: "Réservez votre shooting",
       images: {
         main: photographer2,
@@ -77,6 +80,29 @@ export default function AcceuilPage() {
     handleSlideChange(index, newDirection);
   };
 
+  // Handle touch events for mobile swipe
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
   const currentImages = slides[currentSlide].images;
 
   // Auto-advance slides (optional)
@@ -101,10 +127,10 @@ export default function AcceuilPage() {
 
   return (
     <div className="py-20 sm:py-20 lg:py-20 relative">
-      {/* Navigation arrows */}
+      {/* Navigation arrows - hidden on mobile */}
       <button
         onClick={prevSlide}
-        className="absolute left-20 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-20 transition-transform hover:scale-110 active:scale-95"
+        className="absolute left-20 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-20 transition-transform hover:scale-110 active:scale-95 hidden md:block"
         aria-label="Previous slide"
         disabled={isTransitioning}
       >
@@ -112,23 +138,29 @@ export default function AcceuilPage() {
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-20 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-20 transition-transform hover:scale-110 active:scale-95"
+        className="absolute right-20 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-20 transition-transform hover:scale-110 active:scale-95 hidden md:block"
         aria-label="Next slide"
         disabled={isTransitioning}
       >
         <ChevronRight className="text-slate-700 h-6 w-6" />
       </button>
 
-      <div className="relative w-full max-w-[1200px] mx-auto bg-white py-6 sm:py-8 md:py-10 px-3 sm:px-4 md:px-8 overflow-hidden">
+      <div
+        className="relative w-full max-w-[1200px] mx-auto bg-white py-6 sm:py-8 md:py-10 px-3 sm:px-4 md:px-8 overflow-hidden"
+        ref={slideContainerRef}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         <div className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[700px]">
           {/* Main content */}
           <div
-            className={`relative z-10 max-w-lg  transition-all duration-500 ease-in-out ${getTransitionClass()}`}
+            className={`relative z-10 max-w-lg transition-all duration-500 ease-in-out ${getTransitionClass()}`}
           >
             <h1
               className={`mx-10 text-xl sm:text-2xl md:text-4xl font-bold bg-white text-slate-800 mb-2 ${
                 currentSlide === 1 ? "" : "whitespace-nowrap"
-              } w-full`}
+              }  md:w-full`}
             >
               {slides[currentSlide].title}
             </h1>
@@ -212,7 +244,7 @@ export default function AcceuilPage() {
           </div>
 
           {/* Mobile images (stacked) */}
-          <div className="md:hidden mt-8 space-y-4 w-full sm:w-[90%] mx-auto">
+          <div className="md:hidden mt-8 space-y-4 w-full sm:w-[90%] mx-auto overflow-x-auto">
             <div
               className={`relative w-full h-[180px] sm:h-[220px] transition-all duration-500 ease-in-out ${
                 isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
@@ -225,9 +257,9 @@ export default function AcceuilPage() {
                 style={{ aspectRatio: "16/9" }}
               />
             </div>
-            <div className="flex gap-1 sm:gap-2">
+            <div className="flex gap-1 sm:gap-2 overflow-x-auto pb-2 snap-x">
               <div
-                className={`relative w-1/2 h-[100px] sm:h-[120px] transition-all duration-500 delay-100 ease-in-out ${
+                className={`relative w-1/2 h-[100px] sm:h-[120px] transition-all duration-500 delay-100 ease-in-out snap-center ${
                   isTransitioning
                     ? "opacity-0 scale-95"
                     : "opacity-100 scale-100"
@@ -241,7 +273,7 @@ export default function AcceuilPage() {
                 />
               </div>
               <div
-                className={`relative w-1/2 h-[100px] sm:h-[120px] transition-all duration-500 delay-200 ease-in-out ${
+                className={`relative w-1/2 h-[100px] sm:h-[120px] transition-all duration-500 delay-200 ease-in-out snap-center ${
                   isTransitioning
                     ? "opacity-0 scale-95"
                     : "opacity-100 scale-100"
@@ -258,16 +290,16 @@ export default function AcceuilPage() {
           </div>
         </div>
 
-        {/* Pagination dots */}
-        <div className="flex justify-center gap-2 mt-4">
+        {/* Pagination dots - larger size */}
+        <div className="flex justify-center gap-3 mt-6">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
+              className={`h-3 rounded-full transition-all duration-300 ${
                 currentSlide === index
-                  ? "w-8 bg-teal-500"
-                  : "w-2 bg-slate-300 hover:bg-slate-400"
+                  ? "w-12 bg-[#1687A7]"
+                  : "w-3 bg-slate-300 hover:bg-slate-400"
               }`}
               aria-label={`Go to slide ${index + 1}`}
               disabled={isTransitioning}

@@ -51,7 +51,6 @@ const MenuBar = ({ isMobile = false, closeMenu }) => {
       { label: "Galerie", sectionId: "galerie" },
       { label: "Localisation", sectionId: "localisation" },
       { label: "FeedBacks", sectionId: "feedbacks" },
-      { label: "Boutique", sectionId: "boutique", path: "/boutique" },
     ],
     []
   );
