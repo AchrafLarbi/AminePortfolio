@@ -126,7 +126,7 @@ export default function AcceuilPage() {
   };
 
   return (
-    <div className="py-20 sm:py-20 lg:py-20 relative">
+    <section id="acceuil" className="py-20 sm:py-20 lg:py-20 relative">
       {/* Navigation arrows - hidden on mobile */}
       <button
         onClick={prevSlide}
@@ -307,6 +307,6 @@ export default function AcceuilPage() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
