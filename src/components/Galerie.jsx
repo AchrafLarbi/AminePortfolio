@@ -1,229 +1,95 @@
-"use client";
-
-import { useState } from "react";
-import OptimizedImage from "./shared/OptimizedImage";
-// import img1 from "../assets/galerie/1.jpg";
-import img1 from "../assets/galerie/catherale.webp";
+import img1 from "../assets/galerie/1.jpg";
 import img2 from "../assets/galerie/2.jpg";
 import img3 from "../assets/galerie/3.jpg";
 import img4 from "../assets/galerie/4.jpg";
-// import img5 from "../assets/galerie/5.jpg";
-import img5 from "../assets/galerie/cat.JPG";
+import img5 from "../assets/galerie/5.jpg";
 import img6 from "../assets/galerie/6.jpg";
-// import img7 from "../assets/galerie/7.jpg";
-import img7 from "../assets/galerie/oran.jpg";
+import img7 from "../assets/galerie/7.jpg";
 import img8 from "../assets/galerie/8.jpg";
-// import img9 from "../assets/galerie/9.webp";
-import img9 from "../assets/galerie/makam.jpg";
-import img10 from "../assets/galerie/10.jpg";
-import img11 from "../assets/galerie/11.jpg";
+import img9 from "../assets/galerie/9.jpg";
 
-const Galerie = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
-
-  const photos = [
-    {
-      src: img6,
-      category: "landscape",
-      desktopSize: "col-start-3 row-start-2 row-span-2",
-      mobileSize: "col-span-2",
-      style: { height: "560px" },
-    },
-    {
-      src: img9,
-      category: "portrait",
-      desktopSize: "col-start-4 row-start-1",
-      mobileSize: "col-span-2",
-      style: { height: "560px", margin: "5px" },
-    },
-    {
-      src: img1,
-      category: "detail",
-      desktopSize: "row-start-4 col-start-1",
-      mobileSize: "col-span-2",
-      style: { height: "275px" },
-    },
-    {
-      src: img4,
-      category: "landscape",
-      desktopSize: "row-start-5 col-start-2 col-span-2",
-      mobileSize: "col-span-2",
-      style: { width: "630px", height: "275px" },
-    },
-    {
-      src: img5,
-      category: "portrait",
-      desktopSize: "row-start-6 col-start-2",
-      mobileSize: "col-span-2",
-      style: {
-        height: "275px",
-        objectFit: "contain",
-        objectPosition: "center",
-        transform: "scale(1)",
-      },
-    },
-    {
-      src: img3,
-      category: "landscape",
-      desktopSize: "row-start-3 col-start-2",
-      mobileSize: "col-span-2",
-      style: { height: "570px" },
-    },
-    {
-      src: img7,
-      category: "detail",
-      desktopSize: "row-start-4 col-start-3",
-      mobileSize: "col-span-2",
-      style: {
-        width: "306px",
-        height: "275px",
-        objectFit: "cover",
-        objectPosition: "center",
-      },
-    },
-    {
-      src: img11,
-      category: "portrait",
-      desktopSize: "row-start-4 col-start-4",
-      mobileSize: "col-span-2",
-      style: { height: "565px" },
-    },
-    {
-      src: img2,
-      category: "landscape",
-      desktopSize: "row-start-5 col-start-1",
-      mobileSize: "col-span-2",
-      style: { height: "565px" },
-    },
-    {
-      src: img8,
-      category: "detail",
-      desktopSize: "col-span-2 row-start-6",
-      mobileSize: "col-span-2",
-      style: {
-        width: "640px",
-        height: "275px",
-      },
-    },
-    {
-      src: img10,
-      category: "portrait",
-      desktopSize: "col-start-4 row-start-3",
-      mobileSize: "col-span-2",
-      style: { height: "275px" },
-    },
-  ];
-
-  // Filter photos if needed
-  const filteredPhotos =
-    activeFilter === "all"
-      ? photos
-      : photos.filter((photo) => photo.category === activeFilter);
-
+const Gallery = () => {
   return (
-    <section id="galerie" className="min-h-screen p-4 md:p-8 text-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Mobile Text Section - Appears at the top on mobile */}
-        <div className="md:hidden text-center mb-6 px-4">
-          <h1 className="text-3xl font-bold mb-4">Ma galerie</h1>
-          <p className="text-base mb-6">
-            Découvrez l’univers de Houari Photography, où chaque photo révèle
-            une histoire. Passionné par la nature, Houari capture des paysages
-            fascinants tout en immortalisant des moments uniques à travers des
-            portraits, des événements et des projets artistiques. Explorez une
-            collection où l’émotion rencontre l’esthétique.
-          </p>
-          <div className="flex justify-center space-x-2 mb-4">
-            <button
-              onClick={() => setActiveFilter("all")}
-              className={`px-3 py-1 rounded ${
-                activeFilter === "all"
-                  ? "bg-yellow-500 "
-                  : "bg-white text-black"
-              }`}
-            >
-              Tout
-            </button>
-            <button
-              onClick={() => setActiveFilter("landscape")}
-              className={`px-3 py-1 rounded ${
-                activeFilter === "landscape"
-                  ? "bg-yellow-500 "
-                  : "bg-white text-black"
-              }`}
-            >
-              Paysages
-            </button>
-            <button
-              onClick={() => setActiveFilter("portrait")}
-              className={`px-3 py-1 rounded ${
-                activeFilter === "portrait"
-                  ? "bg-yellow-500 "
-                  : "bg-white text-black"
-              }`}
-            >
-              Portraits
-            </button>
-          </div>
+    <section id="galerie" className="max-w-6xl mx-auto px-4 py-8">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 mb-4">
+          Galerie - Découvrez Mon Univers Visuel
+        </h2>
+        <p className="text-lg text-center text-gray-600 mt-2 max-w-3xl mx-auto">
+          Plongez dans mon portfolio et découvrez une sélection de mes meilleurs
+          clichés. Chaque photo capture une émotion et un instant unique.
+          Cliquez sur le bouton ci-dessous pour visiter mon site et en voir
+          plus.
+        </p>
+      </div>
+
+      {/* Gallery Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-9 gap-1">
+        {/* Row 1 */}
+        <div className="md:col-span-3">
+          <img src={img1} alt="Gallery image 1" className="h-full w-full" />
+        </div>
+        <div className="md:col-span-3">
+          <img src={img2} alt="Gallery image 2" className="w-full h-auto" />
+        </div>
+        <div className="md:col-span-3">
+          <img src={img3} alt="Gallery image 3" className="w-full h-full" />
         </div>
 
-        {/* Mobile Grid Layout */}
-        <div className="md:hidden grid grid-cols-2 gap-2">
-          {filteredPhotos.map((photo, index) => (
-            <OptimizedImage
-              key={index}
-              src={photo.src}
-              alt={`Photo ${index + 1}`}
-              className={`rounded w-full ${photo.mobileSize}`}
-              style={{
-                height: "auto",
-                maxHeight: "50vh",
-                objectFit: "cover",
-                width: "100%",
-              }}
+        {/* Row 2 */}
+        <div className="md:col-span-3">
+          <img src={img4} alt="Gallery image 4" className="w-full h-auto" />
+        </div>
+        <div className="md:col-span-6">
+          <img src={img5} alt="Gallery image 5" className="w-full h-full" />
+        </div>
+
+        {/* Row 3 */}
+        <div className="md:col-span-4">
+          <img src={img6} alt="Gallery image 6" className="w-full h-full" />
+        </div>
+        <div className="md:col-span-5">
+          <img src={img7} alt="Gallery image 7" className="w-full h-full" />
+        </div>
+
+        {/* Row 4 */}
+        <div className="md:col-span-5">
+          <img src={img8} alt="Gallery image 8" className="w-full h-auto" />
+        </div>
+        <div className="md:col-span-4">
+          <img src={img9} alt="Gallery image 9" className="w-full h-full" />
+        </div>
+      </div>
+
+      {/* Button */}
+      <div className="flex mt-8">
+        <button className="bg-[#1687A7] hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300 flex items-center">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M25.5559 24.8121H36.6666L25.5559 5.56299H14.4443L25.5559 24.8121Z"
+              fill="#D4D4D4"
             />
-          ))}
-        </div>
-
-        {/* Desktop Grid Layout */}
-        <div className="hidden md:grid grid-cols-4 gap-4 auto-rows-[275px]">
-          {/* Desktop Text Section */}
-          <div className="row-start-2 lg:col-span-2 p-4 rounded shadow-lg flex flex-col justify-center">
-            <h1 className="text-4xl font-bold mb-4">Ma galerie</h1>
-            <p className="text-lg mb-6 mr-4">
-              Découvrez l&apos;univers de Houari Photography, où chaque photo
-              révèle une histoire. Passionné par la nature, Houari capture des
-              paysages fascinants tout en immortalisant des moments uniques à
-              travers des portraits, des événements et des projets artistiques.
-              Explorez une collection où l&apos;émotion rencontre
-              l&apos;esthétique.
-            </p>
-          </div>
-
-          {/* Desktop Image Grid */}
-          {photos.map((photo, index) => (
-            <OptimizedImage
-              key={index}
-              src={photo.src}
-              alt={`Photo ${index + 1}`}
-              className={`rounded ${photo.desktopSize}`}
-              style={{
-                ...photo.style,
-                maxWidth: "100%",
-                "@media (min-width: 730px) and (max-width: 1030px)": {
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                },
-              }}
+            <path
+              d="M14.4449 5.56348L3.33325 24.8118L8.88992 34.4368L19.9999 15.1885L14.4449 5.56348Z"
+              fill="white"
             />
-          ))}
-        </div>
-
-        {/* Medium screen grid layout */}
+            <path
+              d="M14.4449 24.8115L8.88989 34.4365H31.1116L36.6666 24.8115H14.4449Z"
+              fill="#C4C4C4"
+            />
+          </svg>
+          Visiter mon drive
+        </button>
       </div>
     </section>
   );
 };
 
-export default Galerie;
+export default Gallery;
