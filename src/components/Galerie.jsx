@@ -4,9 +4,10 @@ import img3 from "../assets/galerie/3.jpg";
 import img4 from "../assets/galerie/4.jpg";
 import img5 from "../assets/galerie/5.jpg";
 import img6 from "../assets/galerie/6.jpg";
-import img7 from "../assets/galerie/7.jpg";
+// import img7 from "../assets/galerie/7.jpg";
 import img8 from "../assets/galerie/8.jpg";
 import img9 from "../assets/galerie/9.jpg";
+import img11 from "../assets/galerie/11.jpg";
 
 const Gallery = () => {
   return (
@@ -39,10 +40,14 @@ const Gallery = () => {
 
         {/* Row 2 */}
         <div className="md:col-span-3">
-          <img src={img4} alt="Gallery image 4" className="w-full h-auto" />
+          <img src={img4} alt="Gallery image 4" className="w-full h-full" />
         </div>
         <div className="md:col-span-6">
-          <img src={img5} alt="Gallery image 5" className="w-full h-full" />
+          <img
+            src={img5}
+            alt="Gallery image 5"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         {/* Row 3 */}
@@ -50,7 +55,7 @@ const Gallery = () => {
           <img src={img6} alt="Gallery image 6" className="w-full h-full" />
         </div>
         <div className="md:col-span-5">
-          <img src={img7} alt="Gallery image 7" className="w-full h-full" />
+          <img src={img9} alt="Gallery image 7" className="w-full h-full" />
         </div>
 
         {/* Row 4 */}
@@ -58,7 +63,11 @@ const Gallery = () => {
           <img src={img8} alt="Gallery image 8" className="w-full h-auto" />
         </div>
         <div className="md:col-span-4">
-          <img src={img9} alt="Gallery image 9" className="w-full h-full" />
+          <img
+            src={img11}
+            alt="Gallery image 9"
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 

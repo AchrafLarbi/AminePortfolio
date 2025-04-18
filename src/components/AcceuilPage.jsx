@@ -172,7 +172,15 @@ export default function AcceuilPage() {
                 {slides[currentSlide].description}
               </p>
             </div>
-            <button className="mt-4 sm:mt-6 bg-[#1687A7] hover:bg-[#168799] text-white px-4 sm:px-6 py-2 sm:py-3 rounded flex items-center gap-2 transition-colors group">
+
+            <button
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  .scrollIntoView({ behavior: "smooth" })
+              }
+              className="mt-4 sm:mt-6 bg-[#1687A7] hover:bg-[#168799] text-white px-4 sm:px-6 py-2 sm:py-3 rounded flex items-center gap-2 transition-colors group"
+            >
               <span>{slides[currentSlide].cta}</span>
               <svg
                 width="27"

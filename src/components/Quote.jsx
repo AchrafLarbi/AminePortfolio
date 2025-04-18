@@ -11,26 +11,27 @@ export default function QuoteDisplay() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center my-10 mx-auto bg-gray-100">
+    <div className="flex flex-col items-center justify-center py-8 sm:py-10 md:py-12 px-4 sm:px-6 bg-gray-100">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full max-w-3xl  mx-auto"
+        className="w-full max-w-3xl"
       >
-        <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-5xl md:text-6xl text-slate-800"
+            className="mb-2 sm:mb-0"
           >
             <svg
-              width="80"
-              height="80"
+              width="60"
+              height="60"
               viewBox="0 0 80 80"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24"
             >
               <path
                 d="M68.9885 46.8337C71.8319 45.8859 74.1066 44.1799 75.8126 41.7156C77.5186 39.4409 78.3717 36.8818 78.3717 34.0385C78.5612 31.1951 77.803 28.3517 76.097 25.5083C74.5805 22.8545 72.1162 20.5797 68.7041 18.6841C63.2069 15.8408 58.3731 15.0825 54.2028 16.4094C50.0325 17.9259 47.0944 20.2006 45.3883 23.2336C44.4405 24.75 43.6823 26.8352 43.1136 29.489C42.7345 32.1429 42.5449 34.8915 42.5449 37.7349C42.7345 40.7678 43.1136 43.706 43.6823 46.5494C44.251 49.3928 45.104 51.7623 46.2413 53.6579C47.1891 54.9848 48.3265 56.4065 49.6534 57.9229C50.7908 59.2499 52.1177 60.5768 53.6342 61.9037C55.3402 63.2306 57.2358 64.4627 59.3209 65.6001L69.2728 65.0314C67.9459 63.5149 66.7138 62.0932 65.5764 60.7663C64.6286 59.629 63.7756 58.5864 63.0173 57.6386C62.2591 56.6908 61.5009 55.8378 60.7426 55.0796C59.4157 53.7526 58.3731 52.4257 57.6149 51.0988C56.8567 49.9614 56.1932 48.7293 55.6245 47.4024C55.2454 46.0755 55.2454 44.7486 55.6245 43.4216C58.0888 46.0755 60.9322 47.4024 64.1547 47.4024C65.6712 47.4024 67.2824 47.2128 68.9885 46.8337ZM29.7497 45.412C32.4035 43.8955 34.2991 41.8104 35.4365 39.1566C36.7634 36.6923 37.2373 34.0385 36.8582 31.1951C36.479 28.3517 35.2469 25.6978 33.1617 23.2336C31.2661 20.7693 28.4228 18.8737 24.6316 17.5468C18.7552 15.6512 13.9215 15.746 10.1303 17.8311C6.33908 20.1058 3.78003 22.8545 2.45312 26.077C1.88444 27.783 1.6001 29.9629 1.6001 32.6168C1.6001 35.2706 1.88444 38.0192 2.45312 40.8626C3.02179 43.706 3.78003 46.4546 4.72783 49.1084C5.67563 51.7623 6.90776 53.9422 8.42424 55.6482C9.56159 56.9751 10.8885 58.2073 12.405 59.3446C13.7319 60.2924 15.2484 61.335 16.9544 62.4724C18.85 63.6097 20.9352 64.6523 23.2099 65.6001L33.1617 63.041C31.6453 61.7141 30.2236 60.5768 28.8967 59.629C27.7593 58.6812 26.7167 57.8282 25.7689 57.0699C24.8211 56.3117 23.8733 55.5534 22.9255 54.7952C21.5986 53.6579 20.4613 52.5205 19.5135 51.3831C18.5657 50.4353 17.7126 49.298 16.9544 47.9711C16.1962 46.8337 15.9118 45.6016 16.1014 44.2747C17.6179 45.412 19.1343 46.0755 20.6508 46.265C22.3569 46.6442 23.8733 46.7389 25.2002 46.5494C26.7167 46.3598 28.2332 45.9807 29.7497 45.412Z"
@@ -43,11 +44,11 @@ export default function QuoteDisplay() {
             initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="flex-1 py-10 md:py-12"
+            className="flex-1 py-4 sm:py-6 md:py-8 text-center sm:text-left"
           >
-            <h1 className=" font-Abhaya text-5xl md:text-5xl lg:text-4xl font-medium text-[#2B3D4F] leading-tight">
+            <h1 className="font-Abhaya text-3xl sm:text-4xl md:text-4xl font-medium text-[#2B3D4F] leading-tight">
               Chaque événement est éphémère,
-              <br className="hidden md:block" />
+              <br className="hidden sm:block" />
               mais une photo le rend inoubliable.
             </h1>
           </motion.div>

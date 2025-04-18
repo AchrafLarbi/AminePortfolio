@@ -50,14 +50,14 @@ export default function Footer() {
                 aria-label="Instagram"
                 className="hover:opacity-80 transition-opacity"
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-10 h-10" />
               </a>
               <a
                 href="https://www.linkedin.com/in/amine-benbakreti-33509235a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 aria-label="LinkedIn"
                 className="hover:opacity-80 transition-opacity"
               >
-                <Linkedin className="w-5 h-5" />
+                <Linkedin className="w-10 h-10" />
               </a>
             </div>
           </div>
@@ -90,11 +90,6 @@ export default function Footer() {
               </li>
               <li>
                 <p className="hover:underline cursor-pointer">Commercial</p>
-              </li>
-              <li>
-                <p className="hover:underline cursor-pointer">
-                  Nature et Paysages
-                </p>
               </li>
               <li>
                 <p className="hover:underline cursor-pointer">
