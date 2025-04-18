@@ -50,6 +50,7 @@ const MenuBar = ({ isMobile = false, closeMenu }) => {
       { label: "Services", sectionId: "services" },
       { label: "Galerie", sectionId: "galerie" },
       { label: "Contactez-nous", sectionId: "contact" },
+      { label: "Réseaux sociaux", sectionId: "footer" },
     ],
     []
   );

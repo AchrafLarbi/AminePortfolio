@@ -4,8 +4,7 @@ import Services from "../components/Services";
 import Galerie from "../components/Galerie";
 import FeedbackForm from "../components/FeedbackForm";
 import QuoteSection from "../components/Quote";
-// import LocalisationSection from "../components/Localisation";
-// import Footer from "../components/layout/Footer";
+import Footer from "../components/layout/Footer";
 
 const LandingPage = () => {
   return (
@@ -24,7 +23,7 @@ const LandingPage = () => {
       </main>
 
       {/* Footer Component */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

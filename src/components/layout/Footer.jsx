@@ -1,91 +1,102 @@
-import header_icon from "../../assets/icons/footer_icon.png";
-
+import { Instagram, Linkedin } from "lucide-react";
+import logo from "../../assets/icons/footer_icon.png";
 export default function Footer() {
   return (
     <footer
-      className="bg-zinc-900/30 text-white px-4 sm:px-8 py-8 sm:py-12 rounded-lg mx-4 sm:mx-40"
-      style={{
-        border: "2px solid rgba(255, 255, 255, 0.3)",
-        borderRadius: "20px",
-        background:
-          "linear-gradient(150deg, rgba(0, 0, 0, 0), rgba(250, 250, 250, 0))",
-        backdropFilter: "blur(2px)",
-      }}
+      id="footer"
+      className="mx-auto  bg-[#8CCAD3] text-white py-10 px-6 md:px-12"
     >
-      <div className="max-w-screen-lg mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Logo and Contact Section */}
-          <div className="space-y-6">
-            <img
-              src={header_icon || "/placeholder.svg"}
-              alt="Studio HOUARI Photography"
-              width={180}
-              height={60}
-              className="mb-4"
-            />
+      <div className="max-w-7xl mx-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Left Column - Logo and Contact */}
+          <div className=" xl:pl-28">
+            <div className="mb-6">
+              <img src={logo} alt="Logo" className="w-40 h-20" />
+            </div>
+
             <div className="space-y-2 text-sm">
-              <p>ES Sénia Oran , Algérie</p>
-              <p>Téléphone : (+213) 777 57 91 35</p>
+              <p>
+                E-mail :{" "}
+                <a
+                  href="mailto:captured.by.amine@gmail.com"
+                  className="hover:underline"
+                >
+                  captured.by.amine@gmail.com
+                </a>
+              </p>
+              <div>
+                <p>
+                  Téléphone :{" "}
+                  <a href="tel:+21359317039" className="hover:underline">
+                    +213 (0) 5 59 31 70 39
+                  </a>
+                </p>
+                <p className="ml-[68px]">
+                  <a href="tel:+21341911964" className="hover:underline">
+                    +213 (0) 5 41 91 19 64
+                  </a>
+                </p>
+              </div>
+            </div>
+
+            <div className="flex justify-center items-center space-x-4 pt-10">
+              <a
+                href="https://www.instagram.com/captured.by.amine?igsh=cmU5ZWF3NDFyNTk3"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/amine-benbakreti-33509235a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          {/* Notre Localisation */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-4">Notre Localisation</h3>
+          {/* Middle Column - Services */}
+          <div>
+            <h3 className=" mb-4 text-black font-bold">Mes services</h3>
             <ul className="space-y-2 text-sm">
-              <li>Itinéraire Google map</li>
-              <li>Horaires de travail</li>
+              <li>
+                Couverture des événements professionnels et institutionnels
+              </li>
+              <li>Couverture des soirées et réceptions</li>
+              <li>
+                Production de contenu visuel pour la communication et le
+                marketing
+              </li>
+              <li>Post-production et optimisation des images</li>
             </ul>
           </div>
 
-          {/* Nos Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-4">Nos Services</h3>
+          {/* Right Column - Gallery */}
+          <div>
+            <h3 className=" mb-4 text-black font-bold">Galerie</h3>
             <ul className="space-y-2 text-sm">
-              <li>Photographie de Portrait</li>
-              <li>Photographie d&apos;Événements</li>
-              <li>Photographie Commerciale</li>
-              <li>Ateliers et Formations</li>
-            </ul>
-          </div>
-
-          {/* Galerie */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-4">Galerie</h3>
-            <ul className="space-y-2 text-sm">
-              <li>Portraits</li>
-              <li>Événements</li>
-              <li>Commercial</li>
-              <li>Nature et Paysages</li>
-              <li>Créatif/Artistique</li>
+              <li>
+                <p className="hover:underline">Portraits</p>
+              </li>
+              <li>
+                <p className="hover:underline">Événements</p>
+              </li>
+              <li>
+                <p className="hover:underline">Commercial</p>
+              </li>
+              <li>
+                <p className="hover:underline">Nature et Paysages</p>
+              </li>
+              <li>
+                <p className="hover:underline">Créatif/Artistique</p>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* New Section: Photography Quote */}
-        <div className="mt-8 text-center">
-          <blockquote className="italic text-lg">
-            &quot;La photographie est l&apos;art de figer un moment pour
-            l&apos;éternité.&quot;
-          </blockquote>
-          <p className="mt-2 text-sm">- Studio Houari</p>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="mt-8 sm:mt-12 pt-8 border-t border-gray-800">
-          <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-400">
-            <p className="text-center sm:text-left mb-4 sm:mb-0">
-              © 2024 Studio Houari - Tous droits réservés
-            </p>
-            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6">
-              <span className="text-center sm:text-left">
-                Politique de confidentialité
-              </span>
-              <span className="text-center sm:text-left">
-                Conditions d&apos;utilisation
-              </span>
-            </div>
-          </div>
+        {/* Bottom - Copyright */}
+        <div className="mt-12 pt-6 border-t-2 border-white text-center text-sm">
+          <p>© 2025 Captured by Amine - Tous droits réservés</p>
         </div>
       </div>
     </footer>
