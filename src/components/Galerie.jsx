@@ -64,7 +64,15 @@ const Gallery = () => {
 
       {/* Button */}
       <div className="flex mt-8">
-        <button className="bg-[#1687A7] hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300 flex items-center">
+        <button
+          className="bg-[#1687A7] hover:bg-teal-600 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300 flex items-center"
+          onClick={() =>
+            window.open(
+              "https://drive.google.com/drive/folders/1KJYooY9EQaCZFi4vP3iu_X0VOq6iAKfK",
+              "_blank"
+            )
+          }
+        >
           <svg
             width="40"
             height="40"

@@ -2,7 +2,8 @@ import Header from "../components/layout/Header";
 import AcceuilPage from "../components/AcceuilPage";
 import Services from "../components/Services";
 import Galerie from "../components/Galerie";
-// import FeedbackForm from "../components/FeedbackForm";
+import FeedbackForm from "../components/FeedbackForm";
+import QuoteSection from "../components/Quote";
 // import LocalisationSection from "../components/Localisation";
 // import Footer from "../components/layout/Footer";
 
@@ -17,9 +18,9 @@ const LandingPage = () => {
         <AcceuilPage />
         <Services />
         <Galerie />
-        {/* <Contact /> */}
-        {/* <LocalisationSection />
-        <FeedbackForm /> */}
+
+        <FeedbackForm />
+        <QuoteSection />
       </main>
 
       {/* Footer Component */}

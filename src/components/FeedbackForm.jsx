@@ -20,8 +20,8 @@ export default function FeedbackForm() {
     try {
       // Send email using emailjs
       await emailjs.send(
-        "service_9zel4bk",
-        "template_rh6jail",
+        "service_2aae9es",
+        "template_i3tkzlq",
         {
           to_name: "Houari",
           from_name: `${data.prenom} ${data.nom}`,
@@ -29,7 +29,7 @@ export default function FeedbackForm() {
           phone: data.telephone,
           message: data.feedback,
         },
-        "BWUC4a55si0ESDDVr"
+        "en6CyaTB3AS6Vy8W9"
       );
 
       setMessage("Merci pour votre feedback!");
@@ -44,18 +44,17 @@ export default function FeedbackForm() {
 
   return (
     <section
-      id="feedbacks"
+      id="contact"
       className="min-h-screen  flex flex-col items-center justify-center p-4"
     >
       <div className="max-w-4xl w-full space-y-20 pb-8 ">
         <header className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">
-            Votre retour compte !
+          <h1 className="text-4xl font-bold text-black mb-4">
+            Contact & Retour d’expérience
           </h1>
-          <p className="text-white text-lg">
-            Partagez votre expérience après avoir travaillé avec nous. Votre
-            retour nous aide à continuer à offrir un service de qualité et à
-            capturer les moments qui comptent pour vous.
+          <p className="text-[#2B3D4F] text-lg">
+            Contactez-moi pour toute demande ou partagez votre avis sur mon
+            travail, je vous répondrai avec plaisir.
           </p>
         </header>
 
@@ -64,12 +63,12 @@ export default function FeedbackForm() {
             <input
               {...register("nom", { required: "Le nom est requis" })}
               placeholder="Nom"
-              className="w-full p-4 rounded-md bg-white text-black"
+              className="w-full p-4 rounded-md border border-gray-300 bg-white text-black"
             />
             <input
               {...register("prenom", { required: "Le prénom est requis" })}
               placeholder="Prénom"
-              className="w-full p-4 rounded-md bg-white text-black"
+              className="w-full p-4 rounded-md border border-gray-300 bg-white text-black"
             />
           </div>
           {(errors.nom || errors.prenom) && (
@@ -89,7 +88,7 @@ export default function FeedbackForm() {
               })}
               type="email"
               placeholder="Email"
-              className="w-full p-4 rounded-md bg-white text-black"
+              className="w-full p-4 rounded-md border border-gray-300 bg-white text-black"
             />
             <input
               {...register("telephone", {
@@ -97,7 +96,7 @@ export default function FeedbackForm() {
               })}
               type="tel"
               placeholder="Numéro Téléphone"
-              className="w-full p-4 rounded-md bg-white text-black"
+              className="w-full p-4 rounded-md border border-gray-300 bg-white text-black"
             />
           </div>
           {(errors.email || errors.telephone) && (
@@ -108,8 +107,8 @@ export default function FeedbackForm() {
 
           <textarea
             {...register("feedback", { required: "Le feedback est requis" })}
-            placeholder="Laissez-nous votre feedback..."
-            className="w-full p-4 rounded-md bg-white text-black min-h-[150px]"
+            placeholder="Laissez-nous votre feedback ou toute demande..."
+            className="w-full p-4 rounded-md border border-gray-300 bg-white text-black min-h-[150px]"
           />
           {errors.feedback && (
             <p className="text-red-500  text-sm">{errors.feedback.message}</p>
@@ -129,7 +128,7 @@ export default function FeedbackForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-3 rounded-md disabled:opacity-50 text-lg font-semibold flex items-center justify-center gap-2"
+              className="bg-[#1687A7] hover:bg-teal-600 text-white px-8 py-3 rounded-md disabled:opacity-50 text-lg font-semibold flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 "Envoi en cours..."

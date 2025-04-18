@@ -49,8 +49,7 @@ const MenuBar = ({ isMobile = false, closeMenu }) => {
       { label: "Accueil", sectionId: "acceuil", path: "/" },
       { label: "Services", sectionId: "services" },
       { label: "Galerie", sectionId: "galerie" },
-      { label: "Localisation", sectionId: "localisation" },
-      { label: "FeedBacks", sectionId: "feedbacks" },
+      { label: "Contactez-nous", sectionId: "contact" },
     ],
     []
   );
