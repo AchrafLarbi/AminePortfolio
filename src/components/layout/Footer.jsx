@@ -53,7 +53,7 @@ export default function Footer() {
                 <Instagram className="w-10 h-10" />
               </a>
               <a
-                href="https://www.linkedin.com/in/amine-benbakreti-33509235a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                href="https://www.linkedin.com/company/captured-by-amine/"
                 aria-label="LinkedIn"
                 className="hover:opacity-80 transition-opacity"
               >
