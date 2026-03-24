@@ -1,3 +1,4 @@
+import { useState, useCallback, useEffect } from "react";
 import img1 from "../assets/galerie/1.jpg";
 import img2 from "../assets/galerie/2.jpg";
 import img3 from "../assets/galerie/3.jpg";
@@ -9,7 +10,40 @@ import img8 from "../assets/galerie/8.jpg";
 import img9 from "../assets/galerie/9.jpg";
 import img11 from "../assets/galerie/11.jpg";
 
+const allImages = [img1, img2, img3, img4, img5, img6, img9, img8, img11];
+
 const Gallery = () => {
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const openLightbox = useCallback((index) => {
+    setLightboxIndex(index);
+    document.body.style.overflow = "hidden";
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+    document.body.style.overflow = "";
+  }, []);
+
+  const goNext = useCallback(() => {
+    setLightboxIndex((prev) => (prev + 1) % allImages.length);
+  }, []);
+
+  const goPrev = useCallback(() => {
+    setLightboxIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+  }, []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxIndex, closeLightbox, goNext, goPrev]);
+
   return (
     <section id="galerie" className="max-w-6xl mx-auto px-4 py-8">
       {/* Header */}
@@ -28,45 +62,45 @@ const Gallery = () => {
       {/* Gallery Grid */}
       <div className="grid grid-cols-1 md:grid-cols-9 gap-1">
         {/* Row 1 */}
-        <div className="md:col-span-3">
-          <img src={img1} alt="Gallery image 1" className="h-full w-full" />
+        <div className="md:col-span-3 cursor-pointer" onClick={() => openLightbox(0)}>
+          <img src={img1} alt="Gallery image 1" className="h-full w-full hover:opacity-90 transition-opacity" />
         </div>
-        <div className="md:col-span-3">
-          <img src={img2} alt="Gallery image 2" className="w-full h-auto" />
+        <div className="md:col-span-3 cursor-pointer" onClick={() => openLightbox(1)}>
+          <img src={img2} alt="Gallery image 2" className="w-full h-auto hover:opacity-90 transition-opacity" />
         </div>
-        <div className="md:col-span-3">
-          <img src={img3} alt="Gallery image 3" className="w-full h-full" />
+        <div className="md:col-span-3 cursor-pointer" onClick={() => openLightbox(2)}>
+          <img src={img3} alt="Gallery image 3" className="w-full h-full hover:opacity-90 transition-opacity" />
         </div>
 
         {/* Row 2 */}
-        <div className="md:col-span-3">
-          <img src={img4} alt="Gallery image 4" className="w-full h-full" />
+        <div className="md:col-span-3 cursor-pointer" onClick={() => openLightbox(3)}>
+          <img src={img4} alt="Gallery image 4" className="w-full h-full hover:opacity-90 transition-opacity" />
         </div>
-        <div className="md:col-span-6">
+        <div className="md:col-span-6 cursor-pointer" onClick={() => openLightbox(4)}>
           <img
             src={img5}
             alt="Gallery image 5"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hover:opacity-90 transition-opacity"
           />
         </div>
 
         {/* Row 3 */}
-        <div className="md:col-span-4">
-          <img src={img6} alt="Gallery image 6" className="w-full h-full" />
+        <div className="md:col-span-4 cursor-pointer" onClick={() => openLightbox(5)}>
+          <img src={img6} alt="Gallery image 6" className="w-full h-full hover:opacity-90 transition-opacity" />
         </div>
-        <div className="md:col-span-5">
-          <img src={img9} alt="Gallery image 7" className="w-full h-full" />
+        <div className="md:col-span-5 cursor-pointer" onClick={() => openLightbox(6)}>
+          <img src={img9} alt="Gallery image 7" className="w-full h-full hover:opacity-90 transition-opacity" />
         </div>
 
         {/* Row 4 */}
-        <div className="md:col-span-5">
-          <img src={img8} alt="Gallery image 8" className="w-full h-auto" />
+        <div className="md:col-span-5 cursor-pointer" onClick={() => openLightbox(7)}>
+          <img src={img8} alt="Gallery image 8" className="w-full h-auto hover:opacity-90 transition-opacity" />
         </div>
-        <div className="md:col-span-4">
+        <div className="md:col-span-4 cursor-pointer" onClick={() => openLightbox(8)}>
           <img
             src={img11}
             alt="Gallery image 9"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover hover:opacity-90 transition-opacity"
           />
         </div>
       </div>
@@ -105,6 +139,54 @@ const Gallery = () => {
           Visiter mon drive
         </button>
       </div>
+
+      {/* Fullscreen Lightbox */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-2xl transition-colors"
+            onClick={closeLightbox}
+            aria-label="Close"
+          >
+            ✕
+          </button>
+
+          {/* Counter */}
+          <div className="absolute top-5 left-5 text-white/70 text-sm">
+            {lightboxIndex + 1} / {allImages.length}
+          </div>
+
+          {/* Prev */}
+          <button
+            className="absolute left-3 md:left-6 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-xl transition-colors"
+            onClick={(e) => { e.stopPropagation(); goPrev(); }}
+            aria-label="Previous"
+          >
+            ‹
+          </button>
+
+          {/* Image */}
+          <img
+            src={allImages[lightboxIndex]}
+            alt={`Gallery fullscreen ${lightboxIndex + 1}`}
+            className="max-w-[90vw] max-h-[85vh] object-contain rounded shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {/* Next */}
+          <button
+            className="absolute right-3 md:right-6 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center text-white text-xl transition-colors"
+            onClick={(e) => { e.stopPropagation(); goNext(); }}
+            aria-label="Next"
+          >
+            ›
+          </button>
+        </div>
+      )}
     </section>
   );
 };

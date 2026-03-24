@@ -1,4 +1,4 @@
-export default function Services() {
+﻿export default function Services() {
   // Icons mapping with SVG components
   const iconComponents = {
     Camera: (
