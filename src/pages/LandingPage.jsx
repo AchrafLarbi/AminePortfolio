@@ -5,15 +5,21 @@ import Galerie from "../components/Galerie";
 import FeedbackForm from "../components/FeedbackForm";
 import QuoteSection from "../components/Quote";
 import Footer from "../components/layout/Footer";
+import ParticleBackground from "../components/shared/ParticleBackground";
 
 const LandingPage = () => {
   return (
-    <div className="relative w-full h-full bg-[#F6F5F5]">
+    <div className="relative w-full h-full">
+      {/* Particle background — fixed behind everything */}
+      <ParticleBackground />
+
       {/* Header Component */}
-      <Header />
+      <div className="relative z-[1]">
+        <Header />
+      </div>
 
       {/* Main Content */}
-      <main>
+      <main className="relative z-[1]">
         <AcceuilPage />
         <Services />
         <Galerie />
@@ -23,7 +29,9 @@ const LandingPage = () => {
       </main>
 
       {/* Footer Component */}
-      <Footer />
+      <div className="relative z-[1]">
+        <Footer />
+      </div>
     </div>
   );
 };
