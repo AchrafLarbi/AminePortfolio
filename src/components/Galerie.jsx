@@ -21,6 +21,9 @@ const allImages = [
   img8, img11, img12, imgZ, imgZZ, imgZZZ, imgZZZZ,
 ];
 
+/* ═══ Set to true while gallery is being updated ═══ */
+const galleryUpdating = true;
+
 /* ───── Single gallery image with lazy fade-in ───── */
 const GalleryImage = ({ src, index, onOpen }) => {
   const ref = useRef(null);
@@ -100,67 +103,79 @@ const Lightbox = ({ images, index, onClose, onNext, onPrev }) => {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[100] flex items-center justify-center"
+        className="fixed inset-0 z-[100] flex items-center justify-center p-6 sm:p-10 md:p-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
         onClick={onClose}
       >
-        {/* Backdrop */}
-        <div className="absolute inset-0 bg-black/95 backdrop-blur-sm" />
+        {/* Soft backdrop — page still visible through blur */}
+        <motion.div
+          className="absolute inset-0 bg-black/50 backdrop-blur-xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        />
 
         {/* Close */}
         <button
-          className="absolute top-5 right-5 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/80 hover:text-white text-lg transition-all duration-300 backdrop-blur-sm"
+          className="absolute top-4 right-4 sm:top-6 sm:right-6 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-md"
           onClick={onClose}
           aria-label="Fermer"
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
 
         {/* Counter */}
-        <div className="absolute top-6 left-6 z-10 text-white/50 text-sm font-light tracking-widest">
-          {index + 1} <span className="mx-1">/</span> {images.length}
+        <div className="absolute top-5 left-5 sm:top-6 sm:left-6 z-10 text-white/40 text-xs font-light tracking-[0.2em]">
+          {index + 1} / {images.length}
         </div>
 
         {/* Prev */}
         <button
-          className="absolute left-2 sm:left-4 md:left-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-sm"
+          className="absolute left-2 sm:left-4 md:left-10 z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/8 hover:bg-white/15 active:bg-white/20 border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 backdrop-blur-md"
           onClick={(e) => { e.stopPropagation(); onPrev(); }}
           aria-label="Précédente"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="15 18 9 12 15 6" />
           </svg>
         </button>
 
-        {/* Image */}
+        {/* Image container */}
         <AnimatePresence mode="wait">
-          <motion.img
+          <motion.div
             key={index}
-            src={images[index]}
-            alt={`Photo ${index + 1}`}
-            className="relative z-[1] max-w-[90vw] sm:max-w-[92vw] max-h-[80vh] sm:max-h-[88vh] object-contain select-none"
-            style={{ filter: "drop-shadow(0 25px 60px rgba(0,0,0,0.5))" }}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="relative z-[1] flex items-center justify-center"
+            initial={{ opacity: 0, scale: 0.92, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.92, y: -10 }}
+            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
             onClick={(e) => e.stopPropagation()}
-            draggable={false}
-          />
+          >
+            <img
+              src={images[index]}
+              alt={`Photo ${index + 1}`}
+              className="max-w-[75vw] sm:max-w-[70vw] md:max-w-[60vw] max-h-[65vh] sm:max-h-[72vh] object-contain select-none rounded-xl"
+              style={{
+                filter: "drop-shadow(0 20px 50px rgba(0,0,0,0.35))",
+              }}
+              draggable={false}
+            />
+          </motion.div>
         </AnimatePresence>
 
         {/* Next */}
         <button
-          className="absolute right-2 sm:right-4 md:right-8 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/10 hover:bg-white/20 active:bg-white/30 flex items-center justify-center text-white/70 hover:text-white transition-all duration-300 backdrop-blur-sm"
+          className="absolute right-2 sm:right-4 md:right-10 z-10 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/8 hover:bg-white/15 active:bg-white/20 border border-white/10 flex items-center justify-center text-white/60 hover:text-white transition-all duration-300 backdrop-blur-md"
           onClick={(e) => { e.stopPropagation(); onNext(); }}
           aria-label="Suivante"
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </button>
@@ -172,11 +187,19 @@ const Lightbox = ({ images, index, onClose, onNext, onPrev }) => {
 /* ───── Main Gallery ───── */
 const Gallery = () => {
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [showUpdating, setShowUpdating] = useState(false);
 
   const openLightbox = useCallback((index) => setLightboxIndex(index), []);
   const closeLightbox = useCallback(() => setLightboxIndex(null), []);
   const goNext = useCallback(() => setLightboxIndex((i) => (i + 1) % allImages.length), []);
   const goPrev = useCallback(() => setLightboxIndex((i) => (i - 1 + allImages.length) % allImages.length), []);
+
+  const handleDriveClick = (e) => {
+    if (galleryUpdating) {
+      e.preventDefault();
+      setShowUpdating(true);
+    }
+  };
 
   return (
     <section id="galerie" className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
@@ -216,6 +239,7 @@ const Gallery = () => {
           href="https://drive.google.com/drive/folders/1KJYooY9EQaCZFi4vP3iu_X0VOq6iAKfK"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleDriveClick}
           className="inline-flex items-center gap-3 bg-[#1687A7] hover:bg-[#126e8a] text-white font-medium py-3 px-8 rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#1687A7]/20 hover:-translate-y-0.5"
         >
           <svg width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -237,6 +261,59 @@ const Gallery = () => {
           onPrev={goPrev}
         />
       )}
+
+      {/* Updating popup */}
+      <AnimatePresence>
+        {showUpdating && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setShowUpdating(false)}
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0 bg-black/40 backdrop-blur-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            />
+
+            {/* Card */}
+            <motion.div
+              className="relative bg-white rounded-2xl shadow-[0_20px_60px_-12px_rgba(0,0,0,0.15)] max-w-sm w-full p-8 sm:p-10 text-center"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Icon */}
+              <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-[#1687A7]/10 flex items-center justify-center">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1687A7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                </svg>
+              </div>
+
+              <h3 className="text-lg sm:text-xl font-semibold text-slate-800 mb-3">
+                Galerie en mise à jour
+              </h3>
+              <p className="text-sm sm:text-base text-gray-500 leading-relaxed font-light">
+                La galerie est en cours de mise à jour. Merci de revenir plus tard.
+              </p>
+
+              <button
+                onClick={() => setShowUpdating(false)}
+                className="mt-7 px-8 py-2.5 rounded-full bg-[#1687A7] hover:bg-[#126e8a] text-white text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-[#1687A7]/20 hover:-translate-y-0.5 active:translate-y-0"
+              >
+                Compris
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
