@@ -23,10 +23,10 @@ export default function AcceuilPage() {
 
   const slides = [
     {
-      title: "Photographe Événementiel",
-      subtitle: "Précision et Expertise",
+      title: "Photographe Professionnel",
+      subtitle: "",
       description:
-        "En tant que photographe événementiel professionnel, je capture chaque moment important de vos événements avec précision. Que ce soit des galas, conférences, séminaires, salons, stands d'exposition, lancements de produits ou soirées d'entreprise, chaque photo reflète l'ambiance et l'émotion du moment. Mon objectif est de vous offrir des images de haute qualité qui valorisent votre événement.",
+        "Je capture vos moments et vos projets avec une approche soignée, naturelle et professionnelle. Chaque image est pensée pour mettre en valeur l’instant, l’ambiance et les détails qui comptent. Mon objectif est de créer des visuels de qualité, à la fois authentiques, élégants et impactants.",
       cta: "Planifiez votre shooting",
       images: {
         main: photographer1,
@@ -35,10 +35,10 @@ export default function AcceuilPage() {
       },
     },
     {
-      title: "Mise en Valeur de Votre Événement",
+      title: "Des Images Qui Vous Mettent en Valeur",
       subtitle: "",
       description:
-        "Grâce à mon expérience et à une attention particulière aux détails, je réalise des images qui subliment votre travail et renforcent votre communication visuelle. Chaque photo raconte une histoire : celle de votre entreprise, de vos collaborateurs, de vos invités et de l'ambiance qui fait la réussite de votre événement. Que ce soit pour des publications sur vos réseaux sociaux, vos supports de communication ou votre site web, mes clichés vous permettent d'avoir un contenu de qualité qui attire et engage votre audience.",
+        "Grâce à une attention particulière portée à la composition, à la lumière et à l’émotion, je réalise des photographies qui renforcent votre image et racontent votre histoire. Que ce soit pour valoriser une activité, un projet, une présence ou un moment important, mes clichés vous offrent un contenu visuel fort, moderne et adapté à vos besoins.",
       cta: "Réservez votre shooting",
       images: {
         main: photographer2,
