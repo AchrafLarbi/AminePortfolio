@@ -14,7 +14,7 @@ const LandingPage = () => {
       <ParticleBackground />
 
       {/* Header Component */}
-      <div className="relative z-[1]">
+      <div className="relative z-50">
         <Header />
       </div>
 

@@ -32,14 +32,12 @@ export default function Footer() {
               <div className="text-center md:text-left">
                 <p>
                   Téléphone :{" "}
-                  <a href="tel:+21359317039" className="hover:underline">
-                    +213 (0) 5 59 31 70 39
+                  <a href="tel:+33759443811" className="hover:underline">
+                    +33 (0) 7 59 44 38 11
                   </a>
                 </p>
                 <p className="md:ml-[68px]">
-                  <a href="tel:+21341911964" className="hover:underline">
-                    +213 (0) 5 41 91 19 64
-                  </a>
+                  
                 </p>
               </div>
             </div>
@@ -102,7 +100,7 @@ export default function Footer() {
 
         {/* Bottom - Copyright */}
         <div className="mt-10 pt-6 border-t-2 border-white text-center text-sm">
-          <p>© 2025 Captured by Amine - Tous droits réservés</p>
+          <p>© 2026 Captured by Amine - Tous droits réservés</p>
         </div>
       </div>
     </footer>

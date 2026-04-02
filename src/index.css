@@ -7,3 +7,35 @@ body {
   font-family: "Onest";
   background-color: #F6F5F5;
 }
+
+/* ─── Gallery Masonry Responsive ─── */
+.gallery-masonry {
+  column-count: 1;
+  column-gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .gallery-masonry {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-masonry {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+}
+
+.gallery-item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .gallery-item {
+    margin-bottom: 1rem;
+  }
+}

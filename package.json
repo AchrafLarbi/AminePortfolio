@@ -11,13 +11,13 @@
     "generate-sitemap": "node sitemap-generator.js"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fontsource/space-grotesk": "^5.1.0",
     "@heroicons/react": "^2.2.0",
     "@react-three/fiber": "^8.18.0",
     "@supabase/supabase-js": "^2.47.10",
     "@vercel/analytics": "^1.4.1",
     "bcryptjs": "^2.4.3",
-    "emailjs-com": "^3.2.0",
     "framer-motion": "^11.11.17",
     "houwari_portfolio": "file:",
     "lucide-react": "^0.460.0",
