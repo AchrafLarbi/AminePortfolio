@@ -1,20 +1,20 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import img1 from "../assets/galerie/1.jpg";
-import img2 from "../assets/galerie/2.jpg";
-import img3 from "../assets/galerie/3.jpg";
-import img4 from "../assets/galerie/4.jpg";
-import img5 from "../assets/galerie/5.jpg";
-import img6 from "../assets/galerie/6.jpg";
-import img7 from "../assets/galerie/7.jpg";
-import img8 from "../assets/galerie/8.jpg";
-import img11 from "../assets/galerie/11.jpg";
-import img12 from "../assets/galerie/12.jpg";
-import imgZ from "../assets/galerie/z.jpg";
-import imgZZ from "../assets/galerie/zz.jpg";
-import imgZZZ from "../assets/galerie/zzz.jpg";
-import imgZZZZ from "../assets/galerie/zzzz.jpg";
+import img1 from "../assets/galerie/1.webp";
+import img2 from "../assets/galerie/2.webp";
+import img3 from "../assets/galerie/3.webp";
+import img4 from "../assets/galerie/4.webp";
+import img5 from "../assets/galerie/5.webp";
+import img6 from "../assets/galerie/6.webp";
+import img7 from "../assets/galerie/7.webp";
+import img8 from "../assets/galerie/8.webp";
+import img11 from "../assets/galerie/11.webp";
+import img12 from "../assets/galerie/12.webp";
+import imgZ from "../assets/galerie/z.webp";
+import imgZZ from "../assets/galerie/zz.webp";
+import imgZZZ from "../assets/galerie/zzz.webp";
+import imgZZZZ from "../assets/galerie/zzzz.webp";
 
 const allImages = [
   img1, img2, img3, img4, img5, img6, img7,
@@ -22,7 +22,7 @@ const allImages = [
 ];
 
 /* ═══ Set to true while gallery is being updated ═══ */
-const galleryUpdating = true;
+const galleryUpdating = false;
 
 /* ───── Single gallery image with lazy fade-in ───── */
 const GalleryImage = ({ src, index, onOpen }) => {

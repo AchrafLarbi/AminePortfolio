@@ -4,14 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Import images from assets
-import photographer1 from "../assets/acceuil/acc1-1.png";
-import cameraDisplay1 from "../assets/acceuil/acc1-3.jpg";
-import eventVenue1 from "../assets/acceuil/acc1-2.jpg";
+import photographer1 from "../assets/acceuil/acc1-1.webp";
+import cameraDisplay1 from "../assets/acceuil/acc1-3.webp";
+import eventVenue1 from "../assets/acceuil/acc1-2.webp";
 
 // Import additional sets of images for other slides
-import photographer2 from "../assets/acceuil/acc2-1.jpg";
-import cameraDisplay2 from "../assets/acceuil/acc2-2.jpg";
-import eventVenue2 from "../assets/acceuil/acc2-3.jpg";
+import photographer2 from "../assets/acceuil/acc2-1.webp";
+import cameraDisplay2 from "../assets/acceuil/acc2-2.webp";
+import eventVenue2 from "../assets/acceuil/acc2-3.webp";
 
 export default function AcceuilPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
