@@ -2,6 +2,7 @@ import Header from "../components/layout/Header";
 import AcceuilPage from "../components/AcceuilPage";
 import Services from "../components/Services";
 import Galerie from "../components/Galerie";
+import WeddingOffers from "../components/WeddingOffers";
 import FeedbackForm from "../components/FeedbackForm";
 import QuoteSection from "../components/Quote";
 import Footer from "../components/layout/Footer";
@@ -19,6 +20,7 @@ const LandingPage = () => {
         <AcceuilPage />
         <Services />
         <Galerie />
+        <WeddingOffers />
         <FeedbackForm />
         <QuoteSection />
       </main>

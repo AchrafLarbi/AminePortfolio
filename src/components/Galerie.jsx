@@ -239,7 +239,7 @@ const Gallery = () => {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <a
-          href="https://drive.google.com/drive/folders/1KJYooY9EQaCZFi4vP3iu_X0VOq6iAKfK"
+          href="https://drive.google.com/drive/u/0/folders/1s8xQVs_B70Jaro60UVLhCYb7lkRM5xaZ"
           target="_blank"
           rel="noopener noreferrer"
           onClick={handleDriveClick}
