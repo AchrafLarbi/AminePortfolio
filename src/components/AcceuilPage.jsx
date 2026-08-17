@@ -3,15 +3,37 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-// Import images from assets
 import photographer1 from "../assets/acceuil/acc1-1.webp";
-import cameraDisplay1 from "../assets/acceuil/acc1-3.webp";
-import eventVenue1 from "../assets/acceuil/acc1-2.webp";
-
-// Import additional sets of images for other slides
+import cameraDisplay1 from "../assets/acceuil/xx.jpg";
+import eventVenue1 from "../assets/acceuil/xxx.jpg";
 import photographer2 from "../assets/acceuil/acc2-1.webp";
-import cameraDisplay2 from "../assets/acceuil/acc2-2.webp";
-import eventVenue2 from "../assets/acceuil/acc2-3.webp";
+import cameraDisplay2 from "../assets/acceuil/xxxx.jpg";
+import eventVenue2 from "../assets/acceuil/xxxxx.jpg";
+
+const slides = [
+  {
+    title: "Photographe Professionnel",
+    subtitle: "",
+    description:
+      "Je suis un photographe souriant, naturel et à l’écoute, avec une approche élégante et discrète. Lors de votre mariage, je veille à créer une atmosphère détendue afin que vous puissiez profiter pleinement de chaque instant. Je capture naturellement les émotions, les regards, les sourires et les moments spontanés, tout en restant attentif aux détails qui rendent votre journée unique et inoubliable.",
+    images: {
+      main: photographer1,
+      camera: cameraDisplay1,
+      venue: eventVenue1,
+    },
+  },
+  {
+    title: "Vos Moments, Vos Émotions, Votre Histoire",
+    subtitle: "",
+    description:
+      "Votre mariage est rempli de moments qui ne se répètent qu’une fois : un regard, un sourire, une larme, un éclat de rire, une étreinte. Je les capture naturellement, avec discrétion et attention, pour créer des images élégantes et authentiques qui vous permettront de revivre votre journée encore et encore.",
+    images: {
+      main: photographer2,
+      camera: cameraDisplay2,
+      venue: eventVenue2,
+    },
+  },
+];
 
 export default function AcceuilPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -21,44 +43,15 @@ export default function AcceuilPage() {
   const [touchEnd, setTouchEnd] = useState(null);
   const slideContainerRef = useRef(null);
 
-  const slides = [
-    {
-      title: "Photographe Professionnel",
-      subtitle: "",
-      description:
-        "Je capture vos moments et vos projets avec une approche soignée, naturelle et professionnelle. Chaque image est pensée pour mettre en valeur l’instant, l’ambiance et les détails qui comptent. Mon objectif est de créer des visuels de qualité, à la fois authentiques, élégants et impactants.",
-      cta: "Planifiez votre shooting",
-      images: {
-        main: photographer1,
-        camera: cameraDisplay1,
-        venue: eventVenue1,
-      },
-    },
-    {
-      title: "Des Images Qui Vous Mettent en Valeur",
-      subtitle: "",
-      description:
-        "Grâce à une attention particulière portée à la composition, à la lumière et à l’émotion, je réalise des photographies qui renforcent votre image et racontent votre histoire. Que ce soit pour valoriser une activité, un projet, une présence ou un moment important, mes clichés vous offrent un contenu visuel fort, moderne et adapté à vos besoins.",
-      cta: "Réservez votre shooting",
-      images: {
-        main: photographer2,
-        camera: cameraDisplay2,
-        venue: eventVenue2,
-      },
-    },
-  ];
-
   const handleSlideChange = (newSlide, newDirection) => {
     if (isTransitioning) return;
 
     setDirection(newDirection);
     setIsTransitioning(true);
 
-    // Short delay to allow CSS transitions to complete
     setTimeout(() => {
       setCurrentSlide(newSlide);
 
-      // Allow time for the new slide to render before removing transition class
       setTimeout(() => {
         setIsTransitioning(false);
       }, 50);
@@ -80,7 +73,6 @@ export default function AcceuilPage() {
     handleSlideChange(index, newDirection);
   };
 
-  // Handle touch events for mobile swipe
   const onTouchStart = (e) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
@@ -92,6 +84,7 @@ export default function AcceuilPage() {
 
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > 50;
     const isRightSwipe = distance < -50;
@@ -105,7 +98,6 @@ export default function AcceuilPage() {
 
   const currentImages = slides[currentSlide].images;
 
-  // Auto-advance slides (optional)
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isTransitioning) {
@@ -116,7 +108,6 @@ export default function AcceuilPage() {
     return () => clearInterval(interval);
   }, [currentSlide, isTransitioning]);
 
-  // Determine transition classes based on direction and transition state
   const getTransitionClass = () => {
     if (!isTransitioning) return "";
 
@@ -126,171 +117,158 @@ export default function AcceuilPage() {
   };
 
   return (
-    <section id="acceuil" className="py-20 sm:py-20 lg:py-20 relative">
-      {/* Navigation arrows - hidden on mobile */}
+    <section id="acceuil" className="relative py-20 sm:py-20 lg:py-20">
       <button
         onClick={prevSlide}
-        className="absolute left-20 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-20 transition-transform hover:scale-110 active:scale-95 hidden md:block"
+        className="absolute left-20 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md transition-transform hover:scale-110 hover:bg-white active:scale-95 z-20 md:block"
         aria-label="Previous slide"
         disabled={isTransitioning}
       >
-        <ChevronLeft className="text-slate-700 h-6 w-6" />
+        <ChevronLeft className="h-6 w-6 text-slate-700" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-20 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-20 transition-transform hover:scale-110 active:scale-95 hidden md:block"
+        className="absolute right-20 top-1/2 hidden -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-md transition-transform hover:scale-110 hover:bg-white active:scale-95 z-20 md:block"
         aria-label="Next slide"
         disabled={isTransitioning}
       >
-        <ChevronRight className="text-slate-700 h-6 w-6" />
+        <ChevronRight className="h-6 w-6 text-slate-700" />
       </button>
 
       <div
-        className="relative w-full max-w-[1200px] mx-auto bg-white py-6 sm:py-8 md:py-10 px-3 sm:px-4 md:px-8 overflow-hidden"
+        className="relative mx-auto w-full max-w-[1200px] overflow-hidden bg-white px-3 py-6 sm:px-4 sm:py-8 md:px-8 md:py-10"
         ref={slideContainerRef}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
         <div className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[700px]">
-          {/* Main content */}
           <div
-            className={`relative z-10 max-w-lg transition-all duration-500 ease-in-out ${getTransitionClass()}`}
+            className={`relative z-10 flex min-h-[430px] max-w-xl flex-col px-4 text-left transition-all duration-500 ease-in-out sm:px-6 md:min-h-[520px] md:px-8 ${getTransitionClass()}`}
           >
-            <h1
-              className={`mx-10 text-xl sm:text-2xl md:text-4xl font-bold bg-white text-slate-800 mb-2 ${
-                currentSlide === 1 ? "" : "whitespace-nowrap"
-              }  md:w-full`}
-            >
+            <h1 className="min-h-[72px] text-2xl font-bold leading-tight text-slate-800 sm:min-h-[84px] sm:text-3xl md:min-h-[112px] md:text-4xl">
               {slides[currentSlide].title}
             </h1>
-            <h1 className=" mx-10 text-xl sm:text-xl md:text-2xl font-bold text-slate-800 mb-4 sm:mb-6 ">
-              <span> {slides[currentSlide].subtitle} </span>
-            </h1>
-            <div className="bg-white p-4 sm:p-6 rounded-lg mt-6 sm:mt-10 shadow-sm">
-              <p className="text-xs sm:text-sm md:text-base text-[#2B3D4F] leading-relaxed">
+
+            {slides[currentSlide].subtitle ? (
+              <p className="mb-4 min-h-[40px] text-lg font-semibold text-slate-700 sm:mb-6 sm:text-xl md:min-h-[48px] md:text-2xl">
+                {slides[currentSlide].subtitle}
+              </p>
+            ) : (
+              <div className="min-h-0 md:min-h-[12px]" />
+            )}
+
+            <div className="mt-6 flex-1 rounded-lg bg-white p-5 shadow-sm sm:mt-8 sm:p-6">
+              <p className="text-sm leading-8 text-[#2B3D4F] sm:text-base">
                 {slides[currentSlide].description}
               </p>
             </div>
 
-            <button
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  .scrollIntoView({ behavior: "smooth" })
-              }
-              className="mt-4 sm:mt-6 bg-[#1687A7] hover:bg-[#168799] text-white px-4 sm:px-6 py-2 sm:py-3 rounded flex items-center gap-2 transition-colors group"
-            >
-              <span>{slides[currentSlide].cta}</span>
-              <svg
-                width="27"
-                height="26"
-                viewBox="0 0 27 26"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="group-hover:-translate-y-1 transition-transform"
+            <div className="mt-5 sm:mt-6">
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("contact")
+                    .scrollIntoView({ behavior: "smooth" })
+                }
+                className="group inline-flex items-center gap-2 rounded bg-[#1687A7] px-5 py-2.5 text-white transition-colors hover:bg-[#168799] sm:px-6 sm:py-3"
               >
-                <path
-                  d="M3.75 11.9167L24.3333 2.16669L14.5833 22.75L12.4167 14.0834L3.75 11.9167Z"
-                  stroke="white"
-                />
-              </svg>
-            </button>
+                <span>Contactez-moi</span>
+                <svg
+                  width="27"
+                  height="26"
+                  viewBox="0 0 27 26"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transition-transform group-hover:-translate-y-1"
+                >
+                  <path
+                    d="M3.75 11.9167L24.3333 2.16669L14.5833 22.75L12.4167 14.0834L3.75 11.9167Z"
+                    stroke="white"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
 
-          {/* Images positioned absolutely - optimized for 720-1080px range */}
-          <div className="absolute top-0 right-0 w-1/3 md:w-[55%] lg:w-[60%] h-3/4 md:h-[70%] lg:h-[85%] z-0 hidden md:block">
-            <div className="relative w-full h-full">
-              {/* Main photographer image */}
+          <div className="absolute right-0 top-0 hidden h-3/4 w-1/3 z-0 md:block md:h-[70%] md:w-[55%] lg:h-[85%] lg:w-[60%]">
+            <div className="relative h-full w-full">
               <div
-                className={`absolute top-0 right-0 w-full max-h-[400px] md:max-h-[450px] transition-all duration-700 ease-in-out ${
-                  isTransitioning
-                    ? "opacity-0 scale-95"
-                    : "opacity-100 scale-100"
+                className={`absolute right-0 top-0 w-full max-h-[400px] transition-all duration-700 ease-in-out md:max-h-[450px] ${
+                  isTransitioning ? "scale-95 opacity-0" : "scale-100 opacity-100"
                 }`}
               >
                 <img
                   src={currentImages.main || "/placeholder.svg"}
                   alt="Photographer taking photos"
-                  className="object-cover rounded-md shadow-lg w-full h-full"
+                  className="h-full w-full rounded-md object-cover object-top shadow-lg"
                   style={{ aspectRatio: "16/9" }}
                 />
               </div>
 
-              {/* Camera display image */}
               <div
-                className={`absolute bottom-0 left-0 w-[48%] h-[150px] md:h-[180px] transition-all duration-700 delay-100 ease-in-out ${
-                  isTransitioning
-                    ? "opacity-0 scale-95"
-                    : "opacity-100 scale-100"
+                className={`absolute bottom-0 left-0 h-[150px] w-[48%] transition-all duration-700 delay-100 ease-in-out md:h-[180px] ${
+                  isTransitioning ? "scale-95 opacity-0" : "scale-100 opacity-100"
                 }`}
               >
                 <img
                   src={currentImages.camera || "/placeholder.svg"}
                   alt="Camera display"
-                  className="object-cover rounded-md shadow-lg w-full h-full"
+                  className="h-full w-full rounded-md object-cover shadow-lg"
                   style={{ aspectRatio: "4/3" }}
                 />
               </div>
 
-              {/* Event venue image - reduced gap */}
               <div
-                className={`absolute bottom-0 right-0 w-[48%] h-[150px] md:h-[180px] transition-all duration-700 delay-200 ease-in-out ${
-                  isTransitioning
-                    ? "opacity-0 scale-95"
-                    : "opacity-100 scale-100"
+                className={`absolute bottom-0 right-0 h-[150px] w-[48%] transition-all duration-700 delay-200 ease-in-out md:h-[180px] ${
+                  isTransitioning ? "scale-95 opacity-0" : "scale-100 opacity-100"
                 }`}
               >
                 <img
                   src={currentImages.venue || "/placeholder.svg"}
-                  alt="Event venue with purple lighting"
-                  className="object-cover rounded-md shadow-lg w-full h-full"
+                  alt="Event venue"
+                  className="h-full w-full rounded-md object-cover shadow-lg"
                   style={{ aspectRatio: "4/3" }}
                 />
               </div>
             </div>
           </div>
 
-          {/* Mobile images (stacked) */}
-          <div className="md:hidden mt-8 space-y-4 w-full sm:w-[90%] mx-auto overflow-x-auto">
+          <div className="mx-auto mt-8 w-full space-y-4 overflow-x-auto sm:w-[90%] md:hidden">
             <div
-              className={`relative w-full h-[180px] sm:h-[220px] transition-all duration-500 ease-in-out ${
-                isTransitioning ? "opacity-0 scale-95" : "opacity-100 scale-100"
+              className={`relative h-[180px] w-full transition-all duration-500 ease-in-out sm:h-[220px] ${
+                isTransitioning ? "scale-95 opacity-0" : "scale-100 opacity-100"
               }`}
             >
               <img
                 src={currentImages.main || "/placeholder.svg"}
                 alt="Photographer taking photos"
-                className="object-cover rounded-md shadow-lg w-full h-full"
+                className="h-full w-full rounded-md object-cover object-top shadow-lg"
                 style={{ aspectRatio: "16/9" }}
               />
             </div>
-            <div className="flex gap-1 sm:gap-2 overflow-x-auto pb-2 snap-x">
+            <div className="flex snap-x gap-1 overflow-x-auto pb-2 sm:gap-2">
               <div
-                className={`relative w-1/2 h-[100px] sm:h-[120px] transition-all duration-500 delay-100 ease-in-out snap-center ${
-                  isTransitioning
-                    ? "opacity-0 scale-95"
-                    : "opacity-100 scale-100"
+                className={`relative h-[100px] w-1/2 snap-center transition-all duration-500 delay-100 ease-in-out sm:h-[120px] ${
+                  isTransitioning ? "scale-95 opacity-0" : "scale-100 opacity-100"
                 }`}
               >
                 <img
                   src={currentImages.camera || "/placeholder.svg"}
                   alt="Camera display"
-                  className="object-cover rounded-md shadow-lg w-full h-full"
+                  className="h-full w-full rounded-md object-cover shadow-lg"
                   style={{ aspectRatio: "4/3" }}
                 />
               </div>
               <div
-                className={`relative w-1/2 h-[100px] sm:h-[120px] transition-all duration-500 delay-200 ease-in-out snap-center ${
-                  isTransitioning
-                    ? "opacity-0 scale-95"
-                    : "opacity-100 scale-100"
+                className={`relative h-[100px] w-1/2 snap-center transition-all duration-500 delay-200 ease-in-out sm:h-[120px] ${
+                  isTransitioning ? "scale-95 opacity-0" : "scale-100 opacity-100"
                 }`}
               >
                 <img
                   src={currentImages.venue || "/placeholder.svg"}
-                  alt="Event venue with purple lighting"
-                  className="object-cover rounded-md shadow-lg w-full h-full"
+                  alt="Event venue"
+                  className="h-full w-full rounded-md object-cover shadow-lg"
                   style={{ aspectRatio: "4/3" }}
                 />
               </div>
@@ -298,8 +276,7 @@ export default function AcceuilPage() {
           </div>
         </div>
 
-        {/* Pagination dots - larger size */}
-        <div className="flex justify-center gap-3 mt-6">
+        <div className="mt-6 flex justify-center gap-3">
           {slides.map((_, index) => (
             <button
               key={index}

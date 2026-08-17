@@ -5,22 +5,21 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="w-full bg-[#8CCAD3] text-white py-10 px-4 sm:px-6 md:px-8"
+      className="w-full bg-[#8CCAD3] px-4 py-10 text-white sm:px-6 md:px-8"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {/* Left Column - Logo and Contact */}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-10">
           <div className="flex flex-col items-center md:items-start">
             <div className="mb-6">
               <img
                 src={logo || "/placeholder.svg"}
                 alt="Logo"
-                className="w-40 h-20 object-contain"
+                className="h-20 w-40 object-contain"
               />
             </div>
 
-            <div className="space-y-2 text-sm">
-              <p className="text-center md:text-left">
+            <div className="space-y-2 text-center text-sm md:text-left">
+              <p>
                 E-mail :{" "}
                 <a
                   href="mailto:captured.by.amine@gmail.com"
@@ -29,77 +28,62 @@ export default function Footer() {
                   captured.by.amine@gmail.com
                 </a>
               </p>
-              <div className="text-center md:text-left">
-                <p>
-                  Téléphone :{" "}
-                  <a href="tel:+33759443811" className="hover:underline">
-                    +33 (0) 7 59 44 38 11
-                  </a>
-                </p>
-                <p className="md:ml-[68px]">
-                  
-                </p>
-              </div>
+              <p>
+                Téléphone :{" "}
+                <a href="tel:+33759443811" className="hover:underline">
+                  +33 (0) 7 59 44 38 11
+                </a>
+              </p>
             </div>
 
-            <div className="flex justify-center items-center space-x-4 pt-6 md:pt-10">
+            <div className="flex items-center justify-center space-x-4 pt-6 md:justify-start md:pt-10">
               <a
                 href="https://www.instagram.com/captured.by.amine?igsh=cmU5ZWF3NDFyNTk3"
                 aria-label="Instagram"
-                className="hover:opacity-80 transition-opacity"
+                className="transition-opacity hover:opacity-80"
               >
-                <Instagram className="w-10 h-10" />
+                <Instagram className="h-10 w-10" />
               </a>
               <a
                 href="https://www.linkedin.com/company/captured-by-amine/"
                 aria-label="LinkedIn"
-                className="hover:opacity-80 transition-opacity"
+                className="transition-opacity hover:opacity-80"
               >
-                <Linkedin className="w-10 h-10" />
+                <Linkedin className="h-10 w-10" />
               </a>
             </div>
           </div>
 
-          {/* Middle Column - Services */}
-          <div className="text-center md:text-left mt-6 md:mt-0">
-            <h3 className="mb-4 text-black font-bold">Mes services</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                Couverture des événements professionnels et institutionnels
-              </li>
-              <li>Couverture des soirées et réceptions</li>
-              <li>
-                Production de contenu visuel pour la communication et le
-                marketing
-              </li>
-              <li>Post-production et optimisation des images</li>
+          <div className="mt-6 text-center md:mt-0 md:text-left">
+            <h3 className="mb-4 font-bold text-black">Mes services</h3>
+            <ul className="space-y-2 text-sm leading-relaxed">
+              <li>Mariages</li>
+              <li>Événements & soirées</li>
+              <li>Portraits & séances photo</li>
+              <li>Reportage photo</li>
             </ul>
           </div>
 
-          {/* Right Column - Gallery */}
-          <div className="text-center md:text-left mt-6 md:mt-0">
-            <h3 className="mb-4 text-black font-bold">Galerie</h3>
+          <div className="mt-6 text-center md:mt-0 md:text-left">
+            <h3 className="mb-4 font-bold text-black">Galerie</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <p className="hover:underline cursor-pointer">Portraits</p>
+                <p className="cursor-pointer hover:underline">Portraits</p>
               </li>
               <li>
-                <p className="hover:underline cursor-pointer">Événements</p>
+                <p className="cursor-pointer hover:underline">Événements</p>
               </li>
               <li>
-                <p className="hover:underline cursor-pointer">Commercial</p>
+                <p className="cursor-pointer hover:underline">Commercial</p>
               </li>
               <li>
-                <p className="hover:underline cursor-pointer">
-                  Créatif/Artistique
-                </p>
+                <p className="cursor-pointer hover:underline">Créatif / Artistique</p>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom - Copyright */}
-        <div className="mt-10 pt-6 border-t-2 border-white text-center text-sm">
+        <div className="mt-10 border-t-2 border-white pt-6 text-center text-sm">
           <p>© 2026 Captured by Amine - Tous droits réservés</p>
         </div>
       </div>

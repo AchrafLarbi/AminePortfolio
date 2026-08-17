@@ -64,31 +64,30 @@
     {
       id: 1,
       icon: "Camera",
-      title: "Couverture des événements professionnels et institutionnels",
+      title: "Mariages",
       description:
-        "Photographie de conférences, séminaires, salons, foires, inaugurations et cérémonies officielles pour capturer les moments clés et valoriser votre activité.",
+        "Une couverture complète de votre mariage, des préparatifs à la mairie, jusqu'au parc et à la soirée. Je capture les émotions, les détails et les instants importants pour raconter votre journée avec élégance.",
     },
     {
       id: 2,
       icon: "Video",
-      title: "Couverture des soirées et réceptions",
+      title: "Événements & soirées",
       description:
-        "Captation des cocktails, dîners, galas et événements privés avec des images naturelles et élégantes. Photographies dynamiques et artistiques pour retranscrire l’ambiance unique de vos spectacles.",
+        "Anniversaires, réceptions, soirées privées ou événements professionnels : je capture l’ambiance, les moments forts et les personnes qui rendent chaque événement unique.",
     },
     {
       id: 3,
       icon: "ImageIcon",
-      title:
-        "Production de contenu visuel pour la communication et le marketing",
+      title: "Portraits & séances photo",
       description:
-        "Création d’images adaptées aux réseaux sociaux, supports promotionnels et sites web pour renforcer votre image de marque.",
+        "Portrait individuel, couple, famille ou séance en extérieur à Paris : des images soignées qui reflètent votre personnalité.",
     },
     {
       id: 4,
       icon: "ImagePlus",
-      title: "Post-production et optimisation des images",
+      title: "Reportage photo",
       description:
-        "Retouche et amélioration des photos pour un rendu professionnel, avec possibilité d’ajout de watermark sur demande.",
+        "Une couverture complète de votre événement pour conserver des souvenirs élégants et fidèles à chaque moment.",
     },
   ];
 
@@ -99,27 +98,27 @@
           Mes services
         </h2>
         <p className="text-center text-slate-600 max-w-3xl mx-auto mb-16">
-          J&apos;offre une gamme complète de services de photographie
-          événementielle pour capturer chaque moment important avec précision et
-          professionnalisme.
+          Je propose des prestations de photographie pour vos mariages,
+          événements et moments importants, avec une approche simple, élégante
+          et professionnelle.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
           {services.map((service) => {
             const IconComponent = iconComponents[service.icon];
 
             return (
               <div
                 key={service.id}
-                className="bg-[#D3E0EA] rounded-lg p-6 py-12 flex flex-col items-start justify-start shadow-lg transition-transform transform hover:scale-105"
+                className="flex h-full min-h-[280px] flex-col rounded-lg bg-[#D3E0EA] p-6 shadow-lg transition-transform transform hover:scale-105 md:min-h-[320px]"
               >
-                <div className="w-full h-full pb-8 flex items-start justify-start text-[#1687A7] ">
+                <div className="flex h-20 w-full items-start justify-start text-[#1687A7]">
                   {IconComponent}
                 </div>
-                <h3 className="text-[#1687A7]  font-semibold text-lg text-left mb-3">
+                <h3 className="mb-4 min-h-[56px] text-left text-xl font-semibold leading-snug text-[#1687A7]">
                   {service.title}
                 </h3>
-                <p className="text-[#062126] text-sm text-left mb-4">
+                <p className="text-left text-base leading-8 text-[#062126]">
                   {service.description}
                 </p>
               </div>
