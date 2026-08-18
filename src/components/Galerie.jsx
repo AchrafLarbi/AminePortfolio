@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const galleryImageModules = import.meta.glob("../assets/galerie/*.{jpg,jpeg,png,webp}", {
+const galleryImageModules = import.meta.glob("../assets/galerie/*.webp", {
   eager: true,
   import: "default",
 });

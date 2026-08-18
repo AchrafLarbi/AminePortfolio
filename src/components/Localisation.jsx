@@ -1,5 +1,3 @@
-import OptimizedImage from "./shared/OptimizedImage";
-import localisation from "../assets/services/locations.JPG";
 import { useState, useEffect } from "react";
 export default function LocationSection() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,9 +53,6 @@ export default function LocationSection() {
               <p className="text-2xl font-bold">9h à 17h</p>
               <p className="text-lg mt-2">pour vous accueillir</p>
               <p className="text-lg">à tout moment</p>
-            </div>
-            <div className="md:col-span-1">
-              <OptimizedImage src={localisation} alt="Localisation" />
             </div>
           </div>
 

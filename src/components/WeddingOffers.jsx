@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Check, Clock3, Images, Sparkles } from "lucide-react";
 
-import essentialPhoto from "../assets/acceuil/xx.jpg";
-import completePhoto from "../assets/acceuil/xxx.jpg";
-import extraPhoto from "../assets/acceuil/xxxxx.jpg";
+import essentialPhoto from "../assets/acceuil/xx.webp";
+import completePhoto from "../assets/acceuil/xxx.webp";
+import extraPhoto from "../assets/acceuil/xxxxx.webp";
 
 const offers = [
   {

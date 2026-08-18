@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import header_icon from "../../assets/icons/header_icon.png";
+import header_icon from "../../assets/icons/header_icon.webp";
 import MenuBar from "./MenuBar";
 import { Menu, X } from "lucide-react";
 

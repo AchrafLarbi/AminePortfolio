@@ -1,5 +1,5 @@
 import { Instagram, Linkedin } from "lucide-react";
-import logo from "../../assets/icons/footer_icon.png";
+import logo from "../../assets/icons/footer_icon.webp";
 
 export default function Footer() {
   return (

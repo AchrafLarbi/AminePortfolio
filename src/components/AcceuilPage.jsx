@@ -4,11 +4,11 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import photographer1 from "../assets/acceuil/acc1-1.webp";
-import cameraDisplay1 from "../assets/acceuil/xx.jpg";
-import eventVenue1 from "../assets/acceuil/xxx.jpg";
+import cameraDisplay1 from "../assets/acceuil/xx.webp";
+import eventVenue1 from "../assets/acceuil/xxx.webp";
 import photographer2 from "../assets/acceuil/acc2-1.webp";
-import cameraDisplay2 from "../assets/acceuil/xxxx.jpg";
-import eventVenue2 from "../assets/acceuil/xxxxx.jpg";
+import cameraDisplay2 from "../assets/acceuil/xxxx.webp";
+import eventVenue2 from "../assets/acceuil/xxxxx.webp";
 
 const slides = [
   {

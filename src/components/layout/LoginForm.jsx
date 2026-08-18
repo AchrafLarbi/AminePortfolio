@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { loginUser } from "../../utils/auth";
-import customBg from "../../assets/custom_bg.png";
 import { AlertCircle } from "lucide-react";
 
 const LoginForm = () => {
@@ -34,7 +33,6 @@ const LoginForm = () => {
     <div
       className="min-h-screen w-full bg-black text-white"
       style={{
-        backgroundImage: `url(${customBg})`,
         backgroundSize: "15%",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
