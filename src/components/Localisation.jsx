@@ -51,8 +51,7 @@ export default function LocationSection() {
               <p className="text-2xl font-bold">samedi au jeudi</p>
               <p className="text-2xl">de</p>
               <p className="text-2xl font-bold">9h à 17h</p>
-              <p className="text-lg mt-2">pour vous accueillir</p>
-              <p className="text-lg">à tout moment</p>
+              <p className="text-lg mt-2">à votre convenance</p>
             </div>
           </div>
 
@@ -85,7 +84,7 @@ export default function LocationSection() {
 
               <div className="flex items-center">
                 <h4 className="text-amber-400 font-semibold mr-2">
-                  On est maintenant :
+                  Actuellement :
                 </h4>
                 <p
                   className={

@@ -68,16 +68,16 @@ export default function Footer() {
             <h3 className="mb-4 font-bold text-black">Galerie</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <p className="cursor-pointer hover:underline">Portraits</p>
+                <p className="cursor-pointer hover:underline">Mariages</p>
               </li>
               <li>
                 <p className="cursor-pointer hover:underline">Événements</p>
               </li>
               <li>
-                <p className="cursor-pointer hover:underline">Commercial</p>
+                <p className="cursor-pointer hover:underline">Portraits</p>
               </li>
               <li>
-                <p className="cursor-pointer hover:underline">Créatif / Artistique</p>
+                <p className="cursor-pointer hover:underline">Reportages</p>
               </li>
             </ul>
           </div>

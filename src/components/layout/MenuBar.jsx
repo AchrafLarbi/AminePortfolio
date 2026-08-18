@@ -44,6 +44,7 @@ const MenuBar = ({ isMobile = false, closeMenu }) => {
     () => [
       { label: "Accueil", sectionId: "acceuil", path: "/" },
       { label: "Services", sectionId: "services" },
+      { label: "Offres", sectionId: "offres-mariage" },
       { label: "Galerie", sectionId: "galerie" },
       { label: "Contactez-nous", sectionId: "contact" },
       { label: "Réseaux sociaux", sectionId: "footer" },
