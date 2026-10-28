@@ -7,6 +7,7 @@ import completePhoto from "../assets/acceuil/xxx.webp";
 const offers = [
   {
     id: "hourly",
+    label: "Petite durée",
     title: "4 premières heures",
     price: "100 € / h",
     duration: "4 heures de couverture (400 €)",
@@ -18,6 +19,7 @@ const offers = [
   },
   {
     id: "long-duration",
+    label: "Longue durée",
     title: "Au-delà de 4 heures",
     price: "70 € / h",
     duration: "Tarif réduit à partir de la 5ᵉ heure",
@@ -73,7 +75,7 @@ const OfferCard = ({ offer, index }) => {
             <div className="mb-5 flex items-start justify-between gap-4">
               <div>
                 <p className="mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
-                  Offres mariage
+                  {offer.label}
                 </p>
                 <h3 className="text-2xl font-semibold tracking-tight text-slate-900 sm:text-[2rem]">
                   {offer.title}
