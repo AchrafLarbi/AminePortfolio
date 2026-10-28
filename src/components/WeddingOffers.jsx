@@ -3,50 +3,28 @@ import { Check, Clock3, Images, Sparkles } from "lucide-react";
 
 import essentialPhoto from "../assets/acceuil/xx.webp";
 import completePhoto from "../assets/acceuil/xxx.webp";
-import extraPhoto from "../assets/acceuil/xxxxx.webp";
 
 const offers = [
   {
-    id: "complete",
-    title: "Offre Complète",
-    price: "399 €",
-    duration: "Jusqu'à 8 heures",
-    photos: "Jusqu'à 400 photos retouchées",
-    details: [
-      "Mairie, parc, réception et soirée selon votre programme",
-      "Une couverture fluide pour raconter la journée dans son ensemble",
-    ],
-    image: completePhoto,
-    imageAlt: "Salle de mariage élégante décorée pour une réception",
-    featured: true,
-    badge: "Offre principale",
-  },
-  {
-    id: "essential",
-    title: "Offre Essentielle",
-    price: "250 €",
-    duration: "3 heures de couverture photographique",
-    photos: "Jusqu'à 200 photos retouchées",
-    details: [
-      "Une formule idéale pour capturer les moments essentiels",
-      "Parfaite pour une cérémonie civile ou un reportage ciblé",
-    ],
+    id: "hourly",
+    title: "4 premières heures",
+    price: "100 € / h",
+    duration: "4 heures de couverture (400 €)",
+    photos: "Jusqu'à 100 photos retouchées par heure",
+    details: [],
     image: essentialPhoto,
     imageAlt: "Photographe capturant un couple de mariés à travers un appareil photo",
     featured: false,
   },
   {
-    id: "extra-hour",
-    title: "Heure supplémentaire",
-    price: "50 €",
-    duration: "Prolongez votre reportage au-delà de la durée choisie",
-    photos: "En continuité de votre formule",
-    details: [
-      "Ajoutez du temps selon le rythme réel de votre journée",
-      "Idéal pour prolonger jusqu'aux derniers instants importants",
-    ],
-    image: extraPhoto,
-    imageAlt: "Alliances dorées symbolisant un mariage",
+    id: "long-duration",
+    title: "Au-delà de 4 heures",
+    price: "70 € / h",
+    duration: "Tarif réduit à partir de la 5ᵉ heure",
+    photos: "Jusqu'à 100 photos retouchées par heure",
+    details: [],
+    image: completePhoto,
+    imageAlt: "Salle de mariage élégante décorée pour une réception",
     featured: false,
   },
 ];
@@ -157,6 +135,7 @@ const OfferCard = ({ offer, index }) => {
 export default function WeddingOffers() {
   const featuredOffer = offers.find((offer) => offer.featured);
   const standardOffers = offers.filter((offer) => !offer.featured);
+  let cardIndex = 0;
 
   return (
     <section id="offres-mariage" className="relative overflow-hidden px-4 py-16 sm:py-20 md:py-24">
@@ -186,7 +165,7 @@ export default function WeddingOffers() {
         </motion.div>
 
         <div className="grid gap-6 lg:grid-cols-2">
-          <OfferCard offer={featuredOffer} index={0} />
+          {featuredOffer ? <OfferCard offer={featuredOffer} index={cardIndex++} /> : null}
           {standardOffers.map((offer, index) => (
             <OfferCard key={offer.id} offer={offer} index={index + 1} />
           ))}
